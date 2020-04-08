@@ -41,16 +41,16 @@
         <script src="js/proj4.js"></script>
         <script src="js/proj4leaflet.js"></script>
         <script src="js/leaflet-search.js"></script>
-        <script src="data/Naselje_4.js"></script>
-        <script src="data/Jedinicalokalnesamouprave_5.js"></script>
-        <script src="data/Zgrade_6.js"></script>
-        <script src="data/KUCNI_BROJEVI_7.js"></script>
-        <script src="data/Komunalna_infrastruktura_8.js"></script>
-        <script src="data/Javnarasvjeta_9.js"></script>
-        <script src="data/Nerazvrstane_ceste_10.js"></script>
-        <script src="data/Lokalne_ceste_11.js"></script>
-        <script src="data/upanijske_ceste_12.js"></script>
-        <script src="data/Dravne_ceste_13.js"></script>
+        <script src="data/Naselje_5.js"></script>
+        <script src="data/Jedinicalokalnesamouprave_6.js"></script>
+        <script src="data/Zgrade_7.js"></script>
+        <script src="data/KUCNI_BROJEVI_8.js"></script>
+        <script src="data/Komunalna_infrastruktura_9.js"></script>
+        <script src="data/Javnarasvjeta_10.js"></script>
+        <script src="data/Nerazvrstane_ceste_11.js"></script>
+        <script src="data/Lokalne_ceste_12.js"></script>
+        <script src="data/upanijske_ceste_13.js"></script>
+        <script src="data/Dravne_ceste_14.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -127,10 +127,11 @@
             tiled: true,
             info_format: 'text/html',
             opacity: 1,
+            identify: false,
             attribution: '',
         });
         map.addLayer(layer_DOF2017_2);
-        var layer_Katastar_3 = L.WMS.layer("https://oss.uredjenazemlja.hr/OssWebServices/inspireService/wms?token=e4be1a7d64434868d057793f097c5ef5d66c7c2fed3c4fd8b933c686c9bb6f05", "CP.CadastralZoning", {
+        var layer_Katastarskeopine_3 = L.WMS.layer("https://oss.uredjenazemlja.hr/OssWebServices/inspireService/wms?token=e4be1a7d64434868d057793f097c5ef5d66c7c2fed3c4fd8b933c686c9bb6f05", "CP.CadastralZoning", {
             format: 'image/png',
             uppercase: true,
             transparent: true,
@@ -138,10 +139,23 @@
             tiled: true,
             info_format: 'text/html',
             opacity: 1,
+            identify: false,
             attribution: '',
         });
-        map.addLayer(layer_Katastar_3);
-        function pop_Naselje_4(feature, layer) {
+        map.addLayer(layer_Katastarskeopine_3);
+        var layer_Katastarskeestice_4 = L.WMS.layer("https://oss.uredjenazemlja.hr/OssWebServices/inspireService/wms?token=e4be1a7d64434868d057793f097c5ef5d66c7c2fed3c4fd8b933c686c9bb6f05", "CP.CadastralParcel", {
+            format: 'image/png',
+            uppercase: true,
+            transparent: true,
+            continuousWorld : true,
+            tiled: true,
+            info_format: 'text/html',
+            opacity: 1,
+            identify: false,
+            attribution: '',
+        });
+        map.addLayer(layer_Katastarskeestice_4);
+        function pop_Naselje_5(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -158,8 +172,7 @@
                         <td colspan="2">' + (feature.properties['mb'] !== null ? Autolinker.link(feature.properties['mb'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">naselje</th>\
-                        <td>' + (feature.properties['naselje'] !== null ? Autolinker.link(feature.properties['naselje'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['naselje'] !== null ? Autolinker.link(feature.properties['naselje'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['jls_ime'] !== null ? Autolinker.link(feature.properties['jls_ime'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
@@ -168,36 +181,36 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Naselje_4_0() {
+        function style_Naselje_5_0() {
             return {
-                pane: 'pane_Naselje_4',
+                pane: 'pane_Naselje_5',
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(35,35,35,0.531)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 3.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(243,166,178,1.0)',
+                fillColor: 'rgba(255,255,255,0.531)',
                 interactive: true,
             }
         }
-        map.createPane('pane_Naselje_4');
-        map.getPane('pane_Naselje_4').style.zIndex = 404;
-        map.getPane('pane_Naselje_4').style['mix-blend-mode'] = 'normal';
-        var layer_Naselje_4 = new L.geoJson(json_Naselje_4, {
+        map.createPane('pane_Naselje_5');
+        map.getPane('pane_Naselje_5').style.zIndex = 405;
+        map.getPane('pane_Naselje_5').style['mix-blend-mode'] = 'normal';
+        var layer_Naselje_5 = new L.geoJson(json_Naselje_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Naselje_4',
-            layerName: 'layer_Naselje_4',
-            pane: 'pane_Naselje_4',
-            onEachFeature: pop_Naselje_4,
-            style: style_Naselje_4_0,
+            dataVar: 'json_Naselje_5',
+            layerName: 'layer_Naselje_5',
+            pane: 'pane_Naselje_5',
+            onEachFeature: pop_Naselje_5,
+            style: style_Naselje_5_0,
         });
-        bounds_group.addLayer(layer_Naselje_4);
-        map.addLayer(layer_Naselje_4);
-        function pop_Jedinicalokalnesamouprave_5(feature, layer) {
+        bounds_group.addLayer(layer_Naselje_5);
+        map.addLayer(layer_Naselje_5);
+        function pop_Jedinicalokalnesamouprave_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -229,9 +242,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Jedinicalokalnesamouprave_5_0() {
+        function style_Jedinicalokalnesamouprave_6_0() {
             return {
-                pane: 'pane_Jedinicalokalnesamouprave_5',
+                pane: 'pane_Jedinicalokalnesamouprave_6',
                 opacity: 1,
                 color: 'rgba(53,121,177,1.0)',
                 dashArray: '',
@@ -242,21 +255,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Jedinicalokalnesamouprave_5');
-        map.getPane('pane_Jedinicalokalnesamouprave_5').style.zIndex = 405;
-        map.getPane('pane_Jedinicalokalnesamouprave_5').style['mix-blend-mode'] = 'normal';
-        var layer_Jedinicalokalnesamouprave_5 = new L.geoJson(json_Jedinicalokalnesamouprave_5, {
+        map.createPane('pane_Jedinicalokalnesamouprave_6');
+        map.getPane('pane_Jedinicalokalnesamouprave_6').style.zIndex = 406;
+        map.getPane('pane_Jedinicalokalnesamouprave_6').style['mix-blend-mode'] = 'normal';
+        var layer_Jedinicalokalnesamouprave_6 = new L.geoJson(json_Jedinicalokalnesamouprave_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Jedinicalokalnesamouprave_5',
-            layerName: 'layer_Jedinicalokalnesamouprave_5',
-            pane: 'pane_Jedinicalokalnesamouprave_5',
-            onEachFeature: pop_Jedinicalokalnesamouprave_5,
-            style: style_Jedinicalokalnesamouprave_5_0,
+            dataVar: 'json_Jedinicalokalnesamouprave_6',
+            layerName: 'layer_Jedinicalokalnesamouprave_6',
+            pane: 'pane_Jedinicalokalnesamouprave_6',
+            onEachFeature: pop_Jedinicalokalnesamouprave_6,
+            style: style_Jedinicalokalnesamouprave_6_0,
         });
-        bounds_group.addLayer(layer_Jedinicalokalnesamouprave_5);
-        map.addLayer(layer_Jedinicalokalnesamouprave_5);
-        function pop_Zgrade_6(feature, layer) {
+        bounds_group.addLayer(layer_Jedinicalokalnesamouprave_6);
+        map.addLayer(layer_Jedinicalokalnesamouprave_6);
+        function pop_Zgrade_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -357,9 +370,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Zgrade_6_0() {
+        function style_Zgrade_7_0() {
             return {
-                pane: 'pane_Zgrade_6',
+                pane: 'pane_Zgrade_7',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -372,21 +385,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Zgrade_6');
-        map.getPane('pane_Zgrade_6').style.zIndex = 406;
-        map.getPane('pane_Zgrade_6').style['mix-blend-mode'] = 'normal';
-        var layer_Zgrade_6 = new L.geoJson(json_Zgrade_6, {
+        map.createPane('pane_Zgrade_7');
+        map.getPane('pane_Zgrade_7').style.zIndex = 407;
+        map.getPane('pane_Zgrade_7').style['mix-blend-mode'] = 'normal';
+        var layer_Zgrade_7 = new L.geoJson(json_Zgrade_7, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Zgrade_6',
-            layerName: 'layer_Zgrade_6',
-            pane: 'pane_Zgrade_6',
-            onEachFeature: pop_Zgrade_6,
-            style: style_Zgrade_6_0,
+            dataVar: 'json_Zgrade_7',
+            layerName: 'layer_Zgrade_7',
+            pane: 'pane_Zgrade_7',
+            onEachFeature: pop_Zgrade_7,
+            style: style_Zgrade_7_0,
         });
-        bounds_group.addLayer(layer_Zgrade_6);
-        map.addLayer(layer_Zgrade_6);
-        function pop_KUCNI_BROJEVI_7(feature, layer) {
+        bounds_group.addLayer(layer_Zgrade_7);
+        map.addLayer(layer_Zgrade_7);
+        function pop_KUCNI_BROJEVI_8(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -487,9 +500,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_KUCNI_BROJEVI_7_0() {
+        function style_KUCNI_BROJEVI_8_0() {
             return {
-                pane: 'pane_KUCNI_BROJEVI_7',
+                pane: 'pane_KUCNI_BROJEVI_8',
                 shape: 'square',
                 radius: 3.2,
                 opacity: 1,
@@ -504,27 +517,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_KUCNI_BROJEVI_7');
-        map.getPane('pane_KUCNI_BROJEVI_7').style.zIndex = 407;
-        map.getPane('pane_KUCNI_BROJEVI_7').style['mix-blend-mode'] = 'normal';
-        var layer_KUCNI_BROJEVI_7 = new L.geoJson(json_KUCNI_BROJEVI_7, {
+        map.createPane('pane_KUCNI_BROJEVI_8');
+        map.getPane('pane_KUCNI_BROJEVI_8').style.zIndex = 408;
+        map.getPane('pane_KUCNI_BROJEVI_8').style['mix-blend-mode'] = 'normal';
+        var layer_KUCNI_BROJEVI_8 = new L.geoJson(json_KUCNI_BROJEVI_8, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_KUCNI_BROJEVI_7',
-            layerName: 'layer_KUCNI_BROJEVI_7',
-            pane: 'pane_KUCNI_BROJEVI_7',
-            onEachFeature: pop_KUCNI_BROJEVI_7,
+            dataVar: 'json_KUCNI_BROJEVI_8',
+            layerName: 'layer_KUCNI_BROJEVI_8',
+            pane: 'pane_KUCNI_BROJEVI_8',
+            onEachFeature: pop_KUCNI_BROJEVI_8,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_KUCNI_BROJEVI_7_0(feature));
+                return L.shapeMarker(latlng, style_KUCNI_BROJEVI_8_0(feature));
             },
         });
-        bounds_group.addLayer(layer_KUCNI_BROJEVI_7);
-        map.addLayer(layer_KUCNI_BROJEVI_7);
-        function pop_Komunalna_infrastruktura_8(feature, layer) {
+        bounds_group.addLayer(layer_KUCNI_BROJEVI_8);
+        map.addLayer(layer_KUCNI_BROJEVI_8);
+        function pop_Komunalna_infrastruktura_9(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -598,9 +611,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Komunalna_infrastruktura_8_0() {
+        function style_Komunalna_infrastruktura_9_0() {
             return {
-                pane: 'pane_Komunalna_infrastruktura_8',
+                pane: 'pane_Komunalna_infrastruktura_9',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -613,21 +626,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Komunalna_infrastruktura_8');
-        map.getPane('pane_Komunalna_infrastruktura_8').style.zIndex = 408;
-        map.getPane('pane_Komunalna_infrastruktura_8').style['mix-blend-mode'] = 'normal';
-        var layer_Komunalna_infrastruktura_8 = new L.geoJson(json_Komunalna_infrastruktura_8, {
+        map.createPane('pane_Komunalna_infrastruktura_9');
+        map.getPane('pane_Komunalna_infrastruktura_9').style.zIndex = 409;
+        map.getPane('pane_Komunalna_infrastruktura_9').style['mix-blend-mode'] = 'normal';
+        var layer_Komunalna_infrastruktura_9 = new L.geoJson(json_Komunalna_infrastruktura_9, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Komunalna_infrastruktura_8',
-            layerName: 'layer_Komunalna_infrastruktura_8',
-            pane: 'pane_Komunalna_infrastruktura_8',
-            onEachFeature: pop_Komunalna_infrastruktura_8,
-            style: style_Komunalna_infrastruktura_8_0,
+            dataVar: 'json_Komunalna_infrastruktura_9',
+            layerName: 'layer_Komunalna_infrastruktura_9',
+            pane: 'pane_Komunalna_infrastruktura_9',
+            onEachFeature: pop_Komunalna_infrastruktura_9,
+            style: style_Komunalna_infrastruktura_9_0,
         });
-        bounds_group.addLayer(layer_Komunalna_infrastruktura_8);
-        map.addLayer(layer_Komunalna_infrastruktura_8);
-        function pop_Javnarasvjeta_9(feature, layer) {
+        bounds_group.addLayer(layer_Komunalna_infrastruktura_9);
+        map.addLayer(layer_Komunalna_infrastruktura_9);
+        function pop_Javnarasvjeta_10(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -702,9 +715,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Javnarasvjeta_9_0() {
+        function style_Javnarasvjeta_10_0() {
             return {
-                pane: 'pane_Javnarasvjeta_9',
+                pane: 'pane_Javnarasvjeta_10',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -718,27 +731,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Javnarasvjeta_9');
-        map.getPane('pane_Javnarasvjeta_9').style.zIndex = 409;
-        map.getPane('pane_Javnarasvjeta_9').style['mix-blend-mode'] = 'normal';
-        var layer_Javnarasvjeta_9 = new L.geoJson(json_Javnarasvjeta_9, {
+        map.createPane('pane_Javnarasvjeta_10');
+        map.getPane('pane_Javnarasvjeta_10').style.zIndex = 410;
+        map.getPane('pane_Javnarasvjeta_10').style['mix-blend-mode'] = 'normal';
+        var layer_Javnarasvjeta_10 = new L.geoJson(json_Javnarasvjeta_10, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Javnarasvjeta_9',
-            layerName: 'layer_Javnarasvjeta_9',
-            pane: 'pane_Javnarasvjeta_9',
-            onEachFeature: pop_Javnarasvjeta_9,
+            dataVar: 'json_Javnarasvjeta_10',
+            layerName: 'layer_Javnarasvjeta_10',
+            pane: 'pane_Javnarasvjeta_10',
+            onEachFeature: pop_Javnarasvjeta_10,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Javnarasvjeta_9_0(feature));
+                return L.circleMarker(latlng, style_Javnarasvjeta_10_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Javnarasvjeta_9);
-        map.addLayer(layer_Javnarasvjeta_9);
-        function pop_Nerazvrstane_ceste_10(feature, layer) {
+        bounds_group.addLayer(layer_Javnarasvjeta_10);
+        map.addLayer(layer_Javnarasvjeta_10);
+        function pop_Nerazvrstane_ceste_11(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -975,9 +988,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Nerazvrstane_ceste_10_0() {
+        function style_Nerazvrstane_ceste_11_0() {
             return {
-                pane: 'pane_Nerazvrstane_ceste_10',
+                pane: 'pane_Nerazvrstane_ceste_11',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -988,9 +1001,9 @@
                 interactive: true,
             }
         }
-        function style_Nerazvrstane_ceste_10_1() {
+        function style_Nerazvrstane_ceste_11_1() {
             return {
-                pane: 'pane_Nerazvrstane_ceste_10',
+                pane: 'pane_Nerazvrstane_ceste_11',
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
@@ -1001,21 +1014,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Nerazvrstane_ceste_10');
-        map.getPane('pane_Nerazvrstane_ceste_10').style.zIndex = 410;
-        map.getPane('pane_Nerazvrstane_ceste_10').style['mix-blend-mode'] = 'normal';
-        var layer_Nerazvrstane_ceste_10 = new L.geoJson.multiStyle(json_Nerazvrstane_ceste_10, {
+        map.createPane('pane_Nerazvrstane_ceste_11');
+        map.getPane('pane_Nerazvrstane_ceste_11').style.zIndex = 411;
+        map.getPane('pane_Nerazvrstane_ceste_11').style['mix-blend-mode'] = 'normal';
+        var layer_Nerazvrstane_ceste_11 = new L.geoJson.multiStyle(json_Nerazvrstane_ceste_11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Nerazvrstane_ceste_10',
-            layerName: 'layer_Nerazvrstane_ceste_10',
-            pane: 'pane_Nerazvrstane_ceste_10',
-            onEachFeature: pop_Nerazvrstane_ceste_10,
-            styles: [style_Nerazvrstane_ceste_10_0,style_Nerazvrstane_ceste_10_1,]
+            dataVar: 'json_Nerazvrstane_ceste_11',
+            layerName: 'layer_Nerazvrstane_ceste_11',
+            pane: 'pane_Nerazvrstane_ceste_11',
+            onEachFeature: pop_Nerazvrstane_ceste_11,
+            styles: [style_Nerazvrstane_ceste_11_0,style_Nerazvrstane_ceste_11_1,]
         });
-        bounds_group.addLayer(layer_Nerazvrstane_ceste_10);
-        map.addLayer(layer_Nerazvrstane_ceste_10);
-        function pop_Lokalne_ceste_11(feature, layer) {
+        bounds_group.addLayer(layer_Nerazvrstane_ceste_11);
+        map.addLayer(layer_Nerazvrstane_ceste_11);
+        function pop_Lokalne_ceste_12(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -1041,9 +1054,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Lokalne_ceste_11_0() {
+        function style_Lokalne_ceste_12_0() {
             return {
-                pane: 'pane_Lokalne_ceste_11',
+                pane: 'pane_Lokalne_ceste_12',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -1054,9 +1067,9 @@
                 interactive: true,
             }
         }
-        function style_Lokalne_ceste_11_1() {
+        function style_Lokalne_ceste_12_1() {
             return {
-                pane: 'pane_Lokalne_ceste_11',
+                pane: 'pane_Lokalne_ceste_12',
                 opacity: 1,
                 color: 'rgba(115,255,134,1.0)',
                 dashArray: '',
@@ -1067,21 +1080,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Lokalne_ceste_11');
-        map.getPane('pane_Lokalne_ceste_11').style.zIndex = 411;
-        map.getPane('pane_Lokalne_ceste_11').style['mix-blend-mode'] = 'normal';
-        var layer_Lokalne_ceste_11 = new L.geoJson.multiStyle(json_Lokalne_ceste_11, {
+        map.createPane('pane_Lokalne_ceste_12');
+        map.getPane('pane_Lokalne_ceste_12').style.zIndex = 412;
+        map.getPane('pane_Lokalne_ceste_12').style['mix-blend-mode'] = 'normal';
+        var layer_Lokalne_ceste_12 = new L.geoJson.multiStyle(json_Lokalne_ceste_12, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Lokalne_ceste_11',
-            layerName: 'layer_Lokalne_ceste_11',
-            pane: 'pane_Lokalne_ceste_11',
-            onEachFeature: pop_Lokalne_ceste_11,
-            styles: [style_Lokalne_ceste_11_0,style_Lokalne_ceste_11_1,]
+            dataVar: 'json_Lokalne_ceste_12',
+            layerName: 'layer_Lokalne_ceste_12',
+            pane: 'pane_Lokalne_ceste_12',
+            onEachFeature: pop_Lokalne_ceste_12,
+            styles: [style_Lokalne_ceste_12_0,style_Lokalne_ceste_12_1,]
         });
-        bounds_group.addLayer(layer_Lokalne_ceste_11);
-        map.addLayer(layer_Lokalne_ceste_11);
-        function pop_upanijske_ceste_12(feature, layer) {
+        bounds_group.addLayer(layer_Lokalne_ceste_12);
+        map.addLayer(layer_Lokalne_ceste_12);
+        function pop_upanijske_ceste_13(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -1107,9 +1120,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_upanijske_ceste_12_0() {
+        function style_upanijske_ceste_13_0() {
             return {
-                pane: 'pane_upanijske_ceste_12',
+                pane: 'pane_upanijske_ceste_13',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -1120,9 +1133,9 @@
                 interactive: true,
             }
         }
-        function style_upanijske_ceste_12_1() {
+        function style_upanijske_ceste_13_1() {
             return {
-                pane: 'pane_upanijske_ceste_12',
+                pane: 'pane_upanijske_ceste_13',
                 opacity: 1,
                 color: 'rgba(255,255,30,1.0)',
                 dashArray: '',
@@ -1133,21 +1146,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_upanijske_ceste_12');
-        map.getPane('pane_upanijske_ceste_12').style.zIndex = 412;
-        map.getPane('pane_upanijske_ceste_12').style['mix-blend-mode'] = 'normal';
-        var layer_upanijske_ceste_12 = new L.geoJson.multiStyle(json_upanijske_ceste_12, {
+        map.createPane('pane_upanijske_ceste_13');
+        map.getPane('pane_upanijske_ceste_13').style.zIndex = 413;
+        map.getPane('pane_upanijske_ceste_13').style['mix-blend-mode'] = 'normal';
+        var layer_upanijske_ceste_13 = new L.geoJson.multiStyle(json_upanijske_ceste_13, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_upanijske_ceste_12',
-            layerName: 'layer_upanijske_ceste_12',
-            pane: 'pane_upanijske_ceste_12',
-            onEachFeature: pop_upanijske_ceste_12,
-            styles: [style_upanijske_ceste_12_0,style_upanijske_ceste_12_1,]
+            dataVar: 'json_upanijske_ceste_13',
+            layerName: 'layer_upanijske_ceste_13',
+            pane: 'pane_upanijske_ceste_13',
+            onEachFeature: pop_upanijske_ceste_13,
+            styles: [style_upanijske_ceste_13_0,style_upanijske_ceste_13_1,]
         });
-        bounds_group.addLayer(layer_upanijske_ceste_12);
-        map.addLayer(layer_upanijske_ceste_12);
-        function pop_Dravne_ceste_13(feature, layer) {
+        bounds_group.addLayer(layer_upanijske_ceste_13);
+        map.addLayer(layer_upanijske_ceste_13);
+        function pop_Dravne_ceste_14(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -1173,9 +1186,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Dravne_ceste_13_0() {
+        function style_Dravne_ceste_14_0() {
             return {
-                pane: 'pane_Dravne_ceste_13',
+                pane: 'pane_Dravne_ceste_14',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -1186,9 +1199,9 @@
                 interactive: true,
             }
         }
-        function style_Dravne_ceste_13_1() {
+        function style_Dravne_ceste_14_1() {
             return {
-                pane: 'pane_Dravne_ceste_13',
+                pane: 'pane_Dravne_ceste_14',
                 opacity: 1,
                 color: 'rgba(255,96,17,1.0)',
                 dashArray: '',
@@ -1199,20 +1212,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Dravne_ceste_13');
-        map.getPane('pane_Dravne_ceste_13').style.zIndex = 413;
-        map.getPane('pane_Dravne_ceste_13').style['mix-blend-mode'] = 'normal';
-        var layer_Dravne_ceste_13 = new L.geoJson.multiStyle(json_Dravne_ceste_13, {
+        map.createPane('pane_Dravne_ceste_14');
+        map.getPane('pane_Dravne_ceste_14').style.zIndex = 414;
+        map.getPane('pane_Dravne_ceste_14').style['mix-blend-mode'] = 'normal';
+        var layer_Dravne_ceste_14 = new L.geoJson.multiStyle(json_Dravne_ceste_14, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Dravne_ceste_13',
-            layerName: 'layer_Dravne_ceste_13',
-            pane: 'pane_Dravne_ceste_13',
-            onEachFeature: pop_Dravne_ceste_13,
-            styles: [style_Dravne_ceste_13_0,style_Dravne_ceste_13_1,]
+            dataVar: 'json_Dravne_ceste_14',
+            layerName: 'layer_Dravne_ceste_14',
+            pane: 'pane_Dravne_ceste_14',
+            onEachFeature: pop_Dravne_ceste_14,
+            styles: [style_Dravne_ceste_14_0,style_Dravne_ceste_14_1,]
         });
-        bounds_group.addLayer(layer_Dravne_ceste_13);
-        map.addLayer(layer_Dravne_ceste_13);
+        bounds_group.addLayer(layer_Dravne_ceste_14);
+        map.addLayer(layer_Dravne_ceste_14);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -1224,27 +1237,27 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Dravne_ceste_13.png" /> Državne_ceste': layer_Dravne_ceste_13,'<img src="legend/upanijske_ceste_12.png" /> Županijske_ceste': layer_upanijske_ceste_12,'<img src="legend/Lokalne_ceste_11.png" /> Lokalne_ceste': layer_Lokalne_ceste_11,'<img src="legend/Nerazvrstane_ceste_10.png" /> Nerazvrstane_ceste': layer_Nerazvrstane_ceste_10,'<img src="legend/Javnarasvjeta_9.png" /> Javna rasvjeta': layer_Javnarasvjeta_9,'<img src="legend/Komunalna_infrastruktura_8.png" /> Komunalna_infrastruktura': layer_Komunalna_infrastruktura_8,'<img src="legend/KUCNI_BROJEVI_7.png" /> KUCNI_BROJEVI': layer_KUCNI_BROJEVI_7,'<img src="legend/Zgrade_6.png" /> Zgrade': layer_Zgrade_6,'<img src="legend/Jedinicalokalnesamouprave_5.png" /> Jedinica lokalne samouprave': layer_Jedinicalokalnesamouprave_5,'<img src="legend/Naselje_4.png" /> Naselje': layer_Naselje_4,"Katastar": layer_Katastar_3,"DOF 2017": layer_DOF2017_2,"PPUG Vrlika - I. ID KN_1_1": layer_PPUGVrlikaIIDKN_1_1_1,"PPŽ splitsko-dalmatinske - III. ID KN_1_1": layer_PPsplitskodalmatinskeIIIIDKN_1_1_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Dravne_ceste_14.png" /> Državne_ceste': layer_Dravne_ceste_14,'<img src="legend/upanijske_ceste_13.png" /> Županijske_ceste': layer_upanijske_ceste_13,'<img src="legend/Lokalne_ceste_12.png" /> Lokalne_ceste': layer_Lokalne_ceste_12,'<img src="legend/Nerazvrstane_ceste_11.png" /> Nerazvrstane_ceste': layer_Nerazvrstane_ceste_11,'<img src="legend/Javnarasvjeta_10.png" /> Javna rasvjeta': layer_Javnarasvjeta_10,'<img src="legend/Komunalna_infrastruktura_9.png" /> Komunalna_infrastruktura': layer_Komunalna_infrastruktura_9,'<img src="legend/KUCNI_BROJEVI_8.png" /> KUCNI_BROJEVI': layer_KUCNI_BROJEVI_8,'<img src="legend/Zgrade_7.png" /> Zgrade': layer_Zgrade_7,'<img src="legend/Jedinicalokalnesamouprave_6.png" /> Jedinica lokalne samouprave': layer_Jedinicalokalnesamouprave_6,'<img src="legend/Naselje_5.png" /> Naselje': layer_Naselje_5,"Katastarske čestice": layer_Katastarskeestice_4,"Katastarske općine": layer_Katastarskeopine_3,"DOF 2017": layer_DOF2017_2,"PPUG Vrlika - I. ID KN_1_1": layer_PPUGVrlikaIIDKN_1_1_1,"PPŽ splitsko-dalmatinske - III. ID KN_1_1": layer_PPsplitskodalmatinskeIIIIDKN_1_1_0,},{collapsed:false}).addTo(map);
         map.on("zoomend", function(){
 
-                if (map.hasLayer(layer_KUCNI_BROJEVI_7)) {
+                if (map.hasLayer(layer_KUCNI_BROJEVI_8)) {
                     if (map.getZoom() <= 15 && map.getZoom() >= 19) {
-                        layer_KUCNI_BROJEVI_7.eachLayer(function (layer) {
+                        layer_KUCNI_BROJEVI_8.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_KUCNI_BROJEVI_7.eachLayer(function (layer) {
+                        layer_KUCNI_BROJEVI_8.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
                 }
-                if (map.hasLayer(layer_Nerazvrstane_ceste_10)) {
+                if (map.hasLayer(layer_Nerazvrstane_ceste_11)) {
                     if (map.getZoom() <= 15 && map.getZoom() >= 19) {
-                        layer_Nerazvrstane_ceste_10.eachLayer(function (layer) {
+                        layer_Nerazvrstane_ceste_11.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_Nerazvrstane_ceste_10.eachLayer(function (layer) {
+                        layer_Nerazvrstane_ceste_11.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
@@ -1252,12 +1265,12 @@
         });
         setBounds();
         var i = 0;
-        layer_Naselje_4.eachLayer(function(layer) {
+        layer_KUCNI_BROJEVI_8.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['NASELJE'] !== null?String('<div style="color: #000000; font-size: 10pt; font-weight: bold; font-style: italic; font-family: \'Lucida Sans\', sans-serif;">' + layer.feature.properties['NASELJE']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Naselje_4'});
+            layer.bindTooltip((layer.feature.properties['KB'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['KB']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_KUCNI_BROJEVI_8'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1265,69 +1278,56 @@
               i++;
         });
         var i = 0;
-        layer_KUCNI_BROJEVI_7.eachLayer(function(layer) {
+        layer_Nerazvrstane_ceste_11.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['KB'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['KB']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_KUCNI_BROJEVI_7'});
+            layer.bindTooltip((layer.feature.properties['NAZIV'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['NAZIV']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Nerazvrstane_ceste_11'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        var i = 0;
-        layer_Nerazvrstane_ceste_10.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            layer.bindTooltip((layer.feature.properties['NAZIV'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['NAZIV']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Nerazvrstane_ceste_10'});
-            labels.push(layer);
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
-        });
-                if (map.hasLayer(layer_KUCNI_BROJEVI_7)) {
+                if (map.hasLayer(layer_KUCNI_BROJEVI_8)) {
                     if (map.getZoom() <= 15 && map.getZoom() >= 19) {
-                        layer_KUCNI_BROJEVI_7.eachLayer(function (layer) {
+                        layer_KUCNI_BROJEVI_8.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_KUCNI_BROJEVI_7.eachLayer(function (layer) {
+                        layer_KUCNI_BROJEVI_8.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
                 }
-                if (map.hasLayer(layer_Nerazvrstane_ceste_10)) {
+                if (map.hasLayer(layer_Nerazvrstane_ceste_11)) {
                     if (map.getZoom() <= 15 && map.getZoom() >= 19) {
-                        layer_Nerazvrstane_ceste_10.eachLayer(function (layer) {
+                        layer_Nerazvrstane_ceste_11.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_Nerazvrstane_ceste_10.eachLayer(function (layer) {
+                        layer_Nerazvrstane_ceste_11.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
                 }
         map.addControl(new L.Control.Search({
-            layer: layer_Nerazvrstane_ceste_10,
+            layer: layer_Nerazvrstane_ceste_11,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'naziv'}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
-        resetLabels([layer_Naselje_4,layer_KUCNI_BROJEVI_7,layer_Komunalna_infrastruktura_8,layer_Javnarasvjeta_9,layer_Nerazvrstane_ceste_10]);
+        resetLabels([layer_Naselje_5,layer_KUCNI_BROJEVI_8,layer_Komunalna_infrastruktura_9,layer_Javnarasvjeta_10,layer_Nerazvrstane_ceste_11]);
         map.on("zoomend", function(){
-            resetLabels([layer_Naselje_4,layer_KUCNI_BROJEVI_7,layer_Komunalna_infrastruktura_8,layer_Javnarasvjeta_9,layer_Nerazvrstane_ceste_10]);
+            resetLabels([layer_Naselje_5,layer_KUCNI_BROJEVI_8,layer_Komunalna_infrastruktura_9,layer_Javnarasvjeta_10,layer_Nerazvrstane_ceste_11]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Naselje_4,layer_KUCNI_BROJEVI_7,layer_Komunalna_infrastruktura_8,layer_Javnarasvjeta_9,layer_Nerazvrstane_ceste_10]);
+            resetLabels([layer_Naselje_5,layer_KUCNI_BROJEVI_8,layer_Komunalna_infrastruktura_9,layer_Javnarasvjeta_10,layer_Nerazvrstane_ceste_11]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Naselje_4,layer_KUCNI_BROJEVI_7,layer_Komunalna_infrastruktura_8,layer_Javnarasvjeta_9,layer_Nerazvrstane_ceste_10]);
+            resetLabels([layer_Naselje_5,layer_KUCNI_BROJEVI_8,layer_Komunalna_infrastruktura_9,layer_Javnarasvjeta_10,layer_Nerazvrstane_ceste_11]);
         });
         </script>
     </body>

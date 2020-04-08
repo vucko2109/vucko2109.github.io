@@ -1,6 +1,6 @@
-var json_Komunalna_infrastruktura_8 = {
+var json_Komunalna_infrastruktura_9 = {
 "type": "FeatureCollection",
-"name": "Komunalna_infrastruktura_8",
+"name": "Komunalna_infrastruktura_9",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "qc_id": 0.0, "oid_": "0", "id": "8-1", "vrsta": "Groblje", "naziv": "Groblje Ježević", "k___": "1247\/2, 1247\/1", "k_o": "Ježević", "naselje": "Ježević", "vlasni_tvo": "Grad Vrlika", "upravitelj": "Grad Vrlika", "napomene__": null, "clamped": -1.0, "extruded": 0.0, "snippet": null, "popupinfo": null, "shape_leng": 0.00296184226, "shape_area": 4236.0 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 16.469725457000038, 43.920906955000078 ], [ 16.469823468000072, 43.92092914400007 ], [ 16.469703051000067, 43.921163123000035 ], [ 16.470302322000066, 43.921318438000071 ], [ 16.470641159000024, 43.920642721000036 ], [ 16.470044694000023, 43.920483373000017 ], [ 16.469918679000045, 43.920759710000034 ], [ 16.469815068000059, 43.920733488000053 ], [ 16.469725457000038, 43.920906955000078 ] ] ] ] } },

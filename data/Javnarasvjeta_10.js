@@ -1,6 +1,6 @@
-var json_Javnarasvjeta_9 = {
+var json_Javnarasvjeta_10 = {
 "type": "FeatureCollection",
-"name": "Javnarasvjeta_9",
+"name": "Javnarasvjeta_10",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "qc_id": 0.0, "n_id": "1", "n_name": null, "n_remarks": null, "n_rec_time": "07\/27\/2019 11:00:04.249 CEST", "n_latitude": 43.9138911302, "n_longitud": 16.4672395214, "n_elevatio": 0.0, "vrsta": "Javna Rasvjeta", "tip__arulj": "NAV_70W", "konstrukci": "Betonski stup", "n__zem_": "9999\/20", "k_o": "Ježević", "naselje": "Ježević", "vlasni_tvo": "Grad Vrlika", "upravitelj": "Grad Vrlika", "napomene__": null }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 16.467239521443844, 43.913891130175003 ] ] } },

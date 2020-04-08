@@ -1,6 +1,6 @@
-var json_Zgrade_6 = {
+var json_Zgrade_7 = {
 "type": "FeatureCollection",
-"name": "Zgrade_6",
+"name": "Zgrade_7",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "qc_id": 0.0, "zg_br": "1", "sd_do": null, "bd_do": null, "kb": "1", "kb_st": "S", "sruseno": "NE", "ul_jid": "0494760001", "ul_rb": "0001", "ul_ime": "JAKELIĆI", "pk_jid": null, "pk_rb": null, "pk_ime": null, "sk_mb": null, "sk_ime": null, "ko_mb": "325783", "ko_ime": "Podosoje", "kc_br": null, "na_mb": "049476", "na_ime": "Podosoje", "jms_mb": null, "jms_ime": null, "jls_mb": "05134", "jls_ime": "VRLIKA", "zu_rb": "17", "zu_ime": "Splitsko-dalmatinska županija", "kb_jid": null, "shape_leng": 42.302713857400001, "shape_area": 111.82630000139 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 16.407764229023872, 43.903896180766488 ], [ 16.407688910781712, 43.903816641472361 ], [ 16.407581642576755, 43.903869750445523 ], [ 16.407657085233115, 43.903949289910138 ], [ 16.407764229023872, 43.903896180766488 ] ] ] ] } },

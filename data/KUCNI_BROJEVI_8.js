@@ -1,6 +1,6 @@
-var json_KUCNI_BROJEVI_7 = {
+var json_KUCNI_BROJEVI_8 = {
 "type": "FeatureCollection",
-"name": "KUCNI_BROJEVI_7",
+"name": "KUCNI_BROJEVI_8",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "qc_id": 0.0, "zg_br": "234", "sd_do": null, "bd_do": null, "kb": "234", "kb_st": "S", "sruseno": "NE", "ul_jid": "0460780029", "ul_rb": "0029", "ul_ime": "Otišić", "pk_jid": "0054569000", "pk_rb": "000", "pk_ime": "PK 000", "sk_mb": "0054569", "sk_ime": "SK 0054569", "ko_mb": "325678", "ko_ime": "Koljane", "kc_br": "5100\/1;5070\/4", "na_mb": "046078", "na_ime": "Otišić", "jms_mb": "09695", "jms_ime": "Garjak", "jls_mb": "05134", "jls_ime": "VRLIKA", "zu_rb": "17", "zu_ime": "Splitsko-dalmatinska županija", "kb_jid": null, "shape_leng": 37.803723426369999, "shape_area": 89.293100002919999 }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 16.488113191895003, 43.856808602668679 ] ] } },
